@@ -1,5 +1,3 @@
-# Flappy bird for a micro:bit in python
-# http://blog.withcode.uk/2016/05/flappy-bird-microbit-python-tutorial-for-beginners
 from microbit import *
 import random
 
@@ -19,30 +17,23 @@ frame = 0
 
 # Make an image that represents a pipe to dodge
 def make_pipe():
-    i = Image("00003:00003:00003:00003:00003")
+    pipe = Image("00003:00003:00003:00003:00003")
     gap = random.randint(0,3)   # random wall position
-    i.set_pixel(4, gap, 0)      # blast a hole in the pipe
-    i.set_pixel(4, gap+1, 0)
-    return i
+    pipe.set_pixel(4, gap, 0)      # blast a hole in the pipe
+    pipe.set_pixel(4, gap+1, 0)
+    return pipe
     
 # create first pipe
-i = make_pipe()
+pipe = make_pipe()
 
 # Game loop
 while True:
-    frame += 1
+    display.show(pipe)
     
-    # show pipe
-    display.show(i)
-    
-    # flap if button a was pressed
+    # flap (negative velocity is upward) if button a was pressed
     if button_a.was_pressed():
         speed = -8
         
-    # show score if button b was pressed
-    if button_b.was_pressed():
-        display.scroll("Score:" + str(score))
-
     # accelerate down to terminal velocity
     speed += 1
     if speed > 2:
@@ -56,11 +47,11 @@ while True:
         y = 0
         
     # draw bird
-    led_y = int(y / 20)
-    display.set_pixel(1, led_y, 9)
+    bird_y = int(y / 20)
+    display.set_pixel(1, bird_y, 9)
     
     # check for collision
-    if i.get_pixel(1, led_y) != 0:
+    if pipe.get_pixel(1, bird_y) != 0:
         display.show(Image.SAD)
         sleep(500)
         display.scroll("Score: " + str(score))
@@ -68,7 +59,7 @@ while True:
     
     # move wall left
     if(frame % FRAMES_PER_WALL_SHIFT == 0):
-        i = i.shift_left(1)
+        pipe = pipe.shift_left(1)
     
     # create new wall
     if(frame % FRAMES_PER_NEW_WALL == 0):
@@ -79,4 +70,6 @@ while True:
         score += 1
     
     # wait 20ms
-    sleep(20)   
+    sleep(20)
+    frame += 1
+
