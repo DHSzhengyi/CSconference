@@ -70,6 +70,6 @@ while True:
         score += 1
     
     # wait 20ms
-    sleep(20)
+    sleep(DELAY)
     frame += 1
 
