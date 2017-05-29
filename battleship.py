@@ -14,8 +14,8 @@ radio.config(length=251,queue=3,channel=5,power=6,,,,)
 """
 # A: 1, C: 97, D: 139, E:  539, B: 51
 # board setup
-player_1_board = [[0 for i in range 5] for j in range(5)]
-player_2_board = [[0 for i in range 5] for j in range(5)]
+player_1_board = [[0 for i in range (5)] for j in range(5)]
+player_2_board = [[0 for i in range (5)] for j in range(5)]
 
 # ask the players to place ships. 2 ships.
 display.scroll("Battleships")
