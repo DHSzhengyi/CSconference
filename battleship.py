@@ -39,8 +39,8 @@ for i in range(2):
             # place ship. y coordinate accesses the row.
             if player_1_board[y_coord][x_coord] == 0: # just in case
                 player_1_board[y_coord][x_coord] = 1
-            display.set_pixel(x_coord, y_coord, 9)
-            break
+                display.set_pixel(x_coord, y_coord, 9)
+                break
             
         elif button_a.is_pressed() or button_b.is_pressed():
             if player_1_board[y_coord][x_coord] == 0: # make sure its not a ship
@@ -94,8 +94,8 @@ while p1_points < 2 and p2_points < 2:
             if button_a.is_pressed() and button_b.is_pressed():
                 # attack the square! if failed attack, smirk!
                 # concatenation at a higher level
-                exec("if player_"+str(i)+"_board == 0: display.show(Image.FABULOUS)\n" + \
-                     "else: display.scroll('Hit'), player_"+str(i)+"_board = 0, p"+str(i)+"_points += 1")
+                exec("if player_"+str(i)+"_board[y_coord][x_coord] == 0: display.show(Image.FABULOUS)\n" + \
+                     "else: display.scroll('Hit'), player_"+str(i)+"_board[y_coord][x_coord] = 0, p"+str(i)+"_points += 1")
                 break
 
             elif button_a.is_pressed() or button_b.is_pressed():
