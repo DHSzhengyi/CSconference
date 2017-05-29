@@ -40,6 +40,7 @@ for i in range(2):
             if player_1_board[y_coord][x_coord] == 0: # just in case
                 player_1_board[y_coord][x_coord] = 1
                 display.set_pixel(x_coord, y_coord, 9)
+                sleep(1000)
                 break
             
         elif button_a.is_pressed() or button_b.is_pressed():
@@ -65,6 +66,7 @@ for i in range(2):
             if player_2_board[y_coord][x_coord] == 0: # just in case
                 player_2_board[y_coord][x_coord] = 1
                 display.set_pixel(x_coord, y_coord, 9)
+                sleep(1000)
                 break
             
         elif button_a.is_pressed() or button_b.is_pressed():
