@@ -96,8 +96,8 @@ while p1_points < 2 and p2_points < 2:
             if button_a.is_pressed() and button_b.is_pressed():
                 # attack the square! if failed attack, smirk!
                 # concatenation at a higher level
-                exec("if player_"+str(i)+"_board[y_coord][x_coord] == 0: display.show(Image.FABULOUS), sleep(1000)\n" + \
-                     "else: display.scroll('Hit'), player_"+str(i)+"_board[y_coord][x_coord] = 0, p"+str(i)+"_points += 1, sleep(1000)")
+                exec("if player_"+str(i)+"_board[y_coord][x_coord] == 0:\n\tdisplay.show(Image.FABULOUS)\n\tsleep(1000)\n" + \
+                     "else: \n\tdisplay.scroll('Hit')\n\tplayer_"+str(i)+"_board[y_coord][x_coord] = 0\n\tp"+str(i)+"_points += 1\n\tsleep(1000)\n")
                 break
 
             elif button_a.is_pressed() or button_b.is_pressed():
