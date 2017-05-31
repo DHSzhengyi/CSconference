@@ -82,6 +82,11 @@ display.clear()
 # function in python, that 'simply' runs python code as interpreted from strings.
 # think of a way to use them! ^_^
 
+display.scroll("Game start!")
+display.show(Image.HEART)
+sleep(200)
+display.clear()
+
 # now, for the fun part!
 p1_points = 0
 p2_points = 0
