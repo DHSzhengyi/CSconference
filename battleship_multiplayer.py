@@ -2,11 +2,9 @@ from microbit import *
 
 
 """reading = pin0.read_analog()//204
-
 # utilising microbit library. display is off by default.
 for i in range(5):
     display.set_pixel(readng,i, 9) # light up the wall
-
 # battleship with 2 players!
 radio.on()
 # tune in to your friend's microbit! be wary of signal interference.
@@ -18,7 +16,7 @@ player_1_board = [[0 for i in range (5)] for j in range(5)]
 player_2_board = [[0 for i in range (5)] for j in range(5)]
 
 # ask the players to place ships. 2 ships.
-#display.scroll("Battleships")
+display.scroll("Battleships")
 while not button_a.is_pressed(): # the moment button a is pressed, loop is broken
     display.scroll("Hold A to start") # note that loop does not run again until after scroll.
     # thus, button a needs to be pressed down when the loop restarts (hold)
@@ -109,6 +107,10 @@ while p1_points < 2 and p2_points < 2:
                         elif player_1_board[x_coord][y_coord] == 2:
                             p1_points += 1
                             sleep(1000)
+                        if p1_points > 1:
+                            # won the game
+                            i = 3 # break out of for loop
+                            break
                 if i == 1: # likewise
                     if player_2_board[x_coord][y_coord] == 0:
                         display.show(Image.FABULOUS)
@@ -119,8 +121,13 @@ while p1_points < 2 and p2_points < 2:
                         if player_2_board[x_coord][y_coord] == 0:
                             display.show(Image.FABULOUS)
                         elif player_2_board[x_coord][y_coord] == 2:
-                            p1_points += 1
+                            p2_points += 1
                             sleep(1000)
+                        if p2_points > 1:
+                            # player 2 wins
+                            i = 3
+                            break
+                break
 
             elif button_a.is_pressed() or button_b.is_pressed():
                 if i == 2 and player_1_board[x_coord][y_coord] != 2:
