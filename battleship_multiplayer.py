@@ -24,10 +24,10 @@ while not button_a.is_pressed(): # the moment button a is pressed, loop is broke
     # thus, button a needs to be pressed down when the loop restarts (hold)
 
 # placement cue. player 1.
-#display.scroll("Player 1 Place Ships")
+display.scroll("Player 1 Place Ships")
 # now microbit is handed over to player 1. player 1 uses this microbit to
 # place ship. A goes right, B goes up, selector cycles back.
-#display.scroll("Press A and B together to place ship")
+display.scroll("Press A and B together to place ship")
 
 for i in range(2):
     # 2 ships.
@@ -52,8 +52,8 @@ for i in range(2):
                 y_coord = (y_coord - button_b.get_presses()) % 5 # likewise
 display.clear()
 
-#display.scroll("Player 2 Place Ships")
-#display.scroll("Press A and B together to place ship")
+display.scroll("Player 2 Place Ships")
+display.scroll("Press A and B together to place ship")
 
 for i in range(2):
     # 2 ships.
@@ -78,10 +78,6 @@ for i in range(2):
                 y_coord = (y_coord - button_b.get_presses()) % 5 # likewise
 display.clear()
 
-# and if you found the copy pasting tedious, take note that there is an exec()
-# function in python, that 'simply' runs python code as interpreted from strings.
-# think of a way to use them! ^_^
-
 display.scroll("Game start!")
 display.show(Image.HEART)
 sleep(200)
@@ -101,8 +97,7 @@ while p1_points < 2 and p2_points < 2:
             # note that turns are based on whoever's playing!
             if button_a.is_pressed() and button_b.is_pressed():
                 # attack the square! if failed attack, smirk!
-                # concatenation at a higher level
-                if i == 2:
+                if i == 2: # player 2 is playing. Attack player 1's board!
                     if player_1_board[x_coord][y_coord] == 0:
                         display.show(Image.FABULOUS)
                         sleep(3000)
@@ -114,7 +109,7 @@ while p1_points < 2 and p2_points < 2:
                         elif player_1_board[x_coord][y_coord] == 2:
                             p1_points += 1
                             sleep(1000)
-                if i == 1: 
+                if i == 1: # likewise
                     if player_2_board[x_coord][y_coord] == 0:
                         display.show(Image.FABULOUS)
                         sleep(3000)
@@ -126,8 +121,6 @@ while p1_points < 2 and p2_points < 2:
                         elif player_2_board[x_coord][y_coord] == 2:
                             p1_points += 1
                             sleep(1000)
-                i = 3
-                break
 
             elif button_a.is_pressed() or button_b.is_pressed():
                 if i == 2 and player_1_board[x_coord][y_coord] != 2:
