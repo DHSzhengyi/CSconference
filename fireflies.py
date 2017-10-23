@@ -1,5 +1,6 @@
 from microbit import *
 import random
+import radio
 
 flash = [Image().invert()*(x/9) for x in range(9, -1 , -1)]
 
