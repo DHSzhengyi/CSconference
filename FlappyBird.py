@@ -63,7 +63,7 @@ while True:
     
     # create new wall
     if(frame % FRAMES_PER_NEW_WALL == 0):
-        i = make_pipe()
+        pipe = make_pipe()
         
     # increase score
     if(frame % FRAMES_PER_SCORE == 0):
